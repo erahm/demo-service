@@ -1,0 +1,13 @@
+development:
+  sessions:
+    default:
+      database: demo
+      hosts:
+        - localhost:1000
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ<em>URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
