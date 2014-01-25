@@ -29,6 +29,7 @@ end
 
 get '/creature/name/:name' do
 	content_type :json
+	validateParams(params)
 	name = params[:name]
 	creature = Creature.where(:name => name)
 
@@ -61,7 +62,6 @@ end
 put '/creature', :provides => :json do
 	content_type :json
 
-	validateParams(params)
 	data = parseRequest(request)
 
 	creature = Creature.where(:_id => data['_id'])
@@ -73,7 +73,6 @@ end
 delete '/creature', :provides => :json do
 	content_type :json
 
-	validateParams(params)
 	data = parseRequest(request)
 
 	Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo']).delete
@@ -85,7 +84,6 @@ end
 delete '/creature/id/:id', :provides => :json do
 	content_type :json
 
-	validateParams(params)
 	id = params[:id]
 
 	Creature.where(:_id => id).delete
