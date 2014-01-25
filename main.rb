@@ -51,7 +51,8 @@ post '/creature', :provides => :json do
 
 	data = parseRequest(request)
 
-	creature = Creature.create(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
+	creature = Creature.new(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
+	creature.save
 
 	halt 200, creature.to_json
 
