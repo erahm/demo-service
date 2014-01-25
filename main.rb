@@ -15,7 +15,7 @@ class Creature
 	field :photo, type: String
 end
 
-get '/creatures', :provides => :json do
+get '/creatures' do
 	content_type :json
 
 	creatures = Creature.all
@@ -47,7 +47,7 @@ get '/creature/id/:id' do
 	halt 200, creature.to_json
 end
 
-post '/creature', :provides => :json do
+post '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
@@ -59,7 +59,7 @@ post '/creature', :provides => :json do
 
 end
 
-put '/creature', :provides => :json do
+put '/creature'do
 	content_type :json
 
 	data = parseRequest(request)
@@ -70,7 +70,7 @@ put '/creature', :provides => :json do
 	halt 200, creature.to_json
 end
 
-delete '/creature', :provides => :json do
+delete '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
@@ -81,7 +81,7 @@ delete '/creature', :provides => :json do
 
 end
 
-delete '/creature/id/:id', :provides => :json do
+delete '/creature/id/:id' do
 	content_type :json
 
 	id = params[:id]
