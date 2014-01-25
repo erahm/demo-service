@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'sinatra/reloader' if development?
 require 'mongoid'
 require 'json'
  
@@ -50,7 +49,6 @@ end
 post '/creature', :provides => :json do
 	content_type :json
 
-	validateParams(params)
 	data = parseRequest(request)
 
 	creature = Creature.create(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
