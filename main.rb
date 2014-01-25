@@ -53,8 +53,7 @@ post '/creature', :provides => :json do
 	validateParams(params)
 	data = parseRequest(request)
 
-	creature = Creature.new(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
-	creature.save
+	creature = Creature.create(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
 
 	halt 200, creature.to_json
 
@@ -78,8 +77,7 @@ delete '/creature', :provides => :json do
 	validateParams(params)
 	data = parseRequest(request)
 
-	creature = Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo'])
-	creature.delete
+	Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo']).delete
 
 	halt 200, Creature.all.to_json
 
