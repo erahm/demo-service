@@ -38,7 +38,10 @@ end
 
 get '/creature/id/:id' do
 	content_type :json
+	validateParams(params)
+	
 	id = params[:id]
+
 	creature = Creature.where(:_id => id)
 
 	halt 200, creature.to_json
@@ -77,6 +80,18 @@ delete '/creature', :provides => :json do
 
 	creature = Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo'])
 	creature.delete
+
+	halt 200, Creature.all.to_json
+
+end
+
+delete '/creature/id/:id', :provides => :json do
+	content_type :json
+
+	validateParams(params)
+	id = params[:id]
+
+	Creature.where(:_id => id).delete
 
 	halt 200, Creature.all.to_json
 
