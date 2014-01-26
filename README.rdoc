@@ -1,0 +1,22 @@
+URI's:
+
+GET /creatures
+	- returns all creatures in JSON format
+
+GET /creature/name/:name
+	- returns all creatures with the name == :name in JSON format
+
+GET /creature/id/:id
+	- returns creature with id == :id in JSON format
+
+POST /creature
+	- takes in a JSON object representation of the creature's attributes, inserts the creature into the database and then returns it in JSON format with the id
+
+PUT /creature
+	- takes in a JSON object representation of the creature's attributes, retrieves the creature from the database with the matching id, updates the attributes, and returns the updated creature in JSON format
+
+DELETE /creature
+	- takes in a JSON object representation of the creature's atributes, retrieves the creature from the database where all attributes match, deletes the creature, then returns all remaining creatures in JSON format
+
+DELETE /creature/id/:id
+	- retrieves the creature from the database with the matching id, deletes it, then returns all remaining creatures in JSON format
