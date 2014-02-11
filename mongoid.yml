@@ -1,4 +1,4 @@
-development:
+development: 
   sessions:
     default:
       database: demo
