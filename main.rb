@@ -1,18 +1,10 @@
 require 'sinatra'
 require 'mongoid'
 require 'json'
+require_relative 'creature'
  
 configure do
   Mongoid.load!("./mongoid.yml")
-end
-
-class Creature
-	include Mongoid::Document
-
-	field :type, type: String
-	field :name, type: String
-	field :age, type: Integer
-	field :photo, type: String
 end
 
 get '/creatures' do
@@ -59,7 +51,7 @@ post '/creature' do
 
 end
 
-put '/creature'do
+put '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
