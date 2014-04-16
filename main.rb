@@ -69,7 +69,7 @@ delete '/creature' do
 
 	Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo']).delete
 
-	halt 200, Creature.all.to_json
+	halt 200
 
 end
 
@@ -80,7 +80,7 @@ delete '/creature/id/:id' do
 
 	Creature.where(:_id => id).delete
 
-	halt 200, Creature.all.to_json
+	halt 200
 
 end
 
