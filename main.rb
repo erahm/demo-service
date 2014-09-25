@@ -13,7 +13,7 @@ get '/creatures' do
 	creatures = Creature.all
 
 	if creatures.length > 0
-		halt 200, creatures.to_json
+		halt 200, { creatures: creatures }.to_json
 	else
 		halt 200
 	end
@@ -25,7 +25,7 @@ get '/creature/name/:name' do
 	name = params[:name]
 	creature = Creature.where(:name => name)
 
-	halt 200, creature.to_json
+	halt 200, { creature: creature }.to_json
 end
 
 get '/creature/id/:id' do
@@ -36,7 +36,7 @@ get '/creature/id/:id' do
 
 	creature = Creature.where(:_id => id)
 
-	halt 200, creature.to_json
+	halt 200, { creature: creature }.to_json
 end
 
 post '/creature' do
