@@ -43,7 +43,6 @@ post '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
-	validateParams(data)
 
 	creature = Creature.new(type: data['type'], name: data['name'], age: data['age'], photo: data['photo'])
 	creature.save
@@ -56,7 +55,6 @@ patch '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
-	validateParams(data)
 
 	creature = Creature.where(:_id => data['_id'])
 	creature.update(name: data['name'], type: data['type'], age: data['age'], photo: data['photo'])
@@ -68,7 +66,6 @@ delete '/creature' do
 	content_type :json
 
 	data = parseRequest(request)
-	validateParams(data)
 
 	Creature.where(:type => data['type'], :name => data['name'], :age => data['age'], :photo => data['photo']).delete
 
@@ -78,9 +75,7 @@ end
 
 delete '/creature/id/:id' do
 	content_type :json
-
-	validateParams(params)
-
+	
 	id = params[:id]
 
 	Creature.where(:_id => id).delete
